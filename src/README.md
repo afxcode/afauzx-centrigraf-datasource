@@ -52,7 +52,7 @@ This Grafana DataSource plugin allows you to connect Grafana to a Centrifugo bac
 - Expanded configuration options for advanced use cases.
 
 ## License:
-This plugin is open-source and licensed under the [Apache License](LICENSE).
+This plugin is open-source and licensed under the [Apache License](https://github.com/afxcode/afauzx-centrigraf-datasource/blob/539cdeb7a94e3d32be37887f7b67117ceaf5746b/LICENSE).
 
 ---
 
