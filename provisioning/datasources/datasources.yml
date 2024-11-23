@@ -2,13 +2,11 @@ apiVersion: 1
 
 datasources:
   - name: 'centrigraf'
-    type: 'afx-centrigraf-datasource'
+    type: 'afauzx-centrigraf-datasource'
     access: proxy
     isDefault: false
     orgId: 1
     version: 1
     editable: true
     jsonData:
-      path: '/resources'
-    secureJsonData:
-      apiKey: 'api-key'
+      url: 'ws://localhost:8000/api-ws'

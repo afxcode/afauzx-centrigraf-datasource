@@ -1,7 +1,7 @@
 services:
   grafana:
     user: root
-    container_name: 'afx-centrigraf-datasource'
+    container_name: 'afauzx-centrigraf-datasource'
 
     build:
       context: ./.config
@@ -12,13 +12,13 @@ services:
     ports:
       - 3000:3000/tcp
     volumes:
-      - ./dist:/var/lib/grafana/plugins/afx-centrigraf-datasource
+      - ./dist:/var/lib/grafana/plugins/afauzx-centrigraf-datasource
       - ./provisioning:/etc/grafana/provisioning
-      - .:/root/afx-centrigraf-datasource
+      - .:/root/afauzx-centrigraf-datasource
 
     environment:
       NODE_ENV: development
-      GF_LOG_FILTERS: plugin.afx-centrigraf-datasource:debug
+      GF_LOG_FILTERS: plugin.afauzx-centrigraf-datasource:debug
       GF_LOG_LEVEL: debug
       GF_DATAPROXY_LOGGING: 1
-      GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: afx-centrigraf-datasource
+      GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: afauzx-centrigraf-datasource

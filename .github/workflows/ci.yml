@@ -180,7 +180,7 @@ jobs:
       - name: Docker logs
         if: ${{ always() && steps.run-tests.outcome == 'failure' }}
         run: |
-          docker logs afx-centrigraf-datasource >& grafana-server.log
+          docker logs afauzx-centrigraf-datasource >& grafana-server.log
 
       - name: Stop grafana docker
         run: docker compose down
