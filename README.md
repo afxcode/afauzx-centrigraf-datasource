@@ -7,6 +7,12 @@ This Grafana DataSource plugin allows you to connect Grafana to a Centrifugo bac
 - **Frontend-Only**: The plugin operates entirely on the frontend, leveraging WebSocket connections for real-time updates.
 - **Easy Configuration**: Simple setup via Grafana's native data source configuration UI.
 
+## Demo
+
+![centrigraf-demo](https://github.com/user-attachments/assets/a44e95f4-da89-4561-ac8c-e93947eaefbf)
+
+![centrigraf-demo-1](https://github.com/user-attachments/assets/3217dfc7-fd06-4242-9e37-6074f8bb6bdf)
+
 ## Installation Instructions:
 
 ### 1. Download the Plugin:
