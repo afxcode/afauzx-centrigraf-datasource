@@ -108,7 +108,9 @@ export class DataSource extends DataSourceApi<MyQuery, MyDataSourceOptions> {
 
   private cleanupChannel(channelName: string, subscriber: Subscriber<DataQueryResponse>): void {
     const channel = this.channelSubscribers.get(channelName);
-    if (!channel) return;
+    if (!channel) {
+      return
+    }
 
     channel.subscribers = channel.subscribers.filter((s) => s.subscriber !== subscriber);
 
