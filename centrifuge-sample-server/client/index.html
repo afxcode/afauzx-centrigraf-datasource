@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Centrigraf</title>
+</head>
+<body>
+<h1>Centrigraf</h1>
+<h2 id="messages"></h2>
+
+<script src="https://unpkg.com/centrifuge@5.0.0/dist/centrifuge.js"></script>
+
+<script>
+    const centrifuge = new Centrifuge('ws://localhost:7000/api-ws');
+
+    const sub = centrifuge.newSubscription('cpu_temp');
+
+    sub.on('publication', function(ctx) {
+        console.log(ctx.data);
+        document.getElementById("messages").innerHTML=ctx.data.valuex;
+    });
+
+    sub.subscribe();
+
+    centrifuge.connect();
+</script>
+</body>
+</html>
