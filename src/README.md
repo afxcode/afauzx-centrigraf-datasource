@@ -1,50 +1,55 @@
-<!-- This README file is going to be the one displayed on the Grafana.com website for your plugin. Uncomment and replace the content here before publishing.
+# Centrigraf - Grafana DataSource Plugin for Centrifugo
 
-Remove any remaining comments before publishing as these may be displayed on Grafana.com -->
+This Grafana DataSource plugin allows you to connect Grafana to a Centrifugo backend, enabling real-time data streaming from Centrifugo channels into Grafana dashboards. With this plugin, you can display live data streams from your Centrifugo instance in Grafana without needing a backend.
 
-# Centrigraf
+## Key Features:
+- **Real-time Data**: Subscribe to Centrifugo channels and stream live data into Grafana.
+- **Frontend-Only**: The plugin operates entirely on the frontend, leveraging WebSocket connections for real-time updates.
+- **Easy Configuration**: Simple setup via Grafana's native data source configuration UI.
 
-<!-- To help maximize the impact of your README and improve usability for users, we propose the following loose structure:
+## Installation Instructions:
 
-**BEFORE YOU BEGIN**
-- Ensure all links are absolute URLs so that they will work when the README is displayed within Grafana and Grafana.com
-- Be inspired ✨
-  - [grafana-polystat-panel](https://github.com/grafana/grafana-polystat-panel)
-  - [volkovlabs-variable-panel](https://github.com/volkovlabs/volkovlabs-variable-panel)
+### 1. Download the Plugin:
+- Download the latest `.zip` release from the [GitHub releases page](https://github.com/afxcode/afauzx-centrigraf-datasource/releases).
 
-**ADD SOME BADGES**
+### 2. Install the Plugin:
+- Extract the `.zip` file into the Grafana plugin directory:
+    - **Linux**: `/var/lib/grafana/plugins/`
+    - **Windows**: `C:\Program Files\GrafanaLabs\grafana\data\plugins\`
+    - **Docker**: `/var/lib/grafana/plugins/`
 
-Badges convey useful information at a glance for users whether in the Catalog or viewing the source code. You can use the generator on [Shields.io](https://shields.io/badges/dynamic-json-badge) together with the Grafana.com API
-to create dynamic badges that update automatically when you publish a new version to the marketplace.
+### 3. Restart Grafana:
+- After placing the plugin in the correct directory, restart Grafana:
+    - **Linux**: `sudo systemctl restart grafana-server`
+    - **Windows**: Restart the Grafana service.
 
-- For the URL parameter use `https://grafana.com/api/plugins/your-plugin-id`.
-- Example queries:
-  - Downloads: `$.downloads`
-  - Catalog Version: `$.version`
-  - Grafana Dependency: `$.grafanaDependency`
-  - Signature Type: `$.versionSignatureType`
-- Optionally, for the logo parameter use `grafana`.
+### 4. Configure the DataSource:
+- Navigate to **Configuration > Data Sources** in Grafana.
+- Add a new data source and select **Centrifugo** from the list.
+- Provide the URL of your Centrifugo server.
 
-Full example: ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?logo=grafana&query=$.version&url=https://grafana.com/api/plugins/grafana-polystat-panel&label=Marketplace&prefix=v&color=F47A20)
+### 5. Test the Connection:
+- Use the **Save & Test** button in the data source configuration to verify the connection. The plugin will attempt to connect to the Centrifugo backend and ensure that real-time data streaming is working.
 
-Consider other [badges](https://shields.io/badges) as you feel appropriate for your project.
+## How It Works:
+- The plugin connects to your Centrifugo server over WebSockets to receive live updates from channels.
+- Once the connection is established, it subscribes to specified channels and sends the incoming data to Grafana.
+- The plugin requires no backend server and runs entirely on the frontend, making it simple to deploy and configure.
 
-## Overview / Introduction
-Provide one or more paragraphs as an introduction to your plugin to help users understand why they should use it.
+## Notes:
+- **Centrifugo Instance**: Ensure that your Centrifugo server is running and accessible from your Grafana instance. You’ll need the URL of your Centrifugo instance to configure the plugin.
+- **Plugin Status**: This plugin is currently a work in progress and may not be fully tested. Please report any issues or feature requests on the [GitHub issues page](https://github.com/yourusername/your-repo/issues).
 
-Consider including screenshots:
-- in [plugin.json](https://grafana.com/developers/plugin-tools/reference/plugin-json#info) include them as relative links.
-- in the README ensure they are absolute URLs.
+## Future Improvements:
+- Enhanced error handling and automatic reconnection logic for more robust operation.
+- Support for private channels and authentication mechanisms to secure your real-time data streams.
+- Expanded configuration options for advanced use cases.
 
-## Requirements
-List any requirements or dependencies they may need to run the plugin.
+## License:
+This plugin is open-source and licensed under the [Apache License](LICENSE).
 
-## Getting Started
-Provide a quick start on how to configure and use the plugin.
+---
 
-## Documentation
-If your project has dedicated documentation available for users, provide links here. For help in following Grafana's style recommendations for technical documentation, refer to our [Writer's Toolkit](https://grafana.com/docs/writers-toolkit/).
+### Contributing:
+Feel free to open an issue or submit a pull request if you would like to contribute to the development of this plugin. Your contributions are welcome!
 
-## Contributing
-Do you want folks to contribute to the plugin or provide feedback through specific means? If so, tell them how!
--->

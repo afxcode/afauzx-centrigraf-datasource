@@ -1,112 +1,55 @@
-# Grafana data source plugin template
+# Centrigraf - Grafana DataSource Plugin for Centrifugo
 
-This template is a starting point for building a Data Source Plugin for Grafana.
+This Grafana DataSource plugin allows you to connect Grafana to a Centrifugo backend, enabling real-time data streaming from Centrifugo channels into Grafana dashboards. With this plugin, you can display live data streams from your Centrifugo instance in Grafana without needing a backend.
 
-## What are Grafana data source plugins?
+## Key Features:
+- **Real-time Data**: Subscribe to Centrifugo channels and stream live data into Grafana.
+- **Frontend-Only**: The plugin operates entirely on the frontend, leveraging WebSocket connections for real-time updates.
+- **Easy Configuration**: Simple setup via Grafana's native data source configuration UI.
 
-Grafana supports a wide range of data sources, including Prometheus, MySQL, and even Datadog. There’s a good chance you can already visualize metrics from the systems you have set up. In some cases, though, you already have an in-house metrics solution that you’d like to add to your Grafana dashboards. Grafana Data Source Plugins enables integrating such solutions with Grafana.
+## Installation Instructions:
 
-## Getting started
+### 1. Download the Plugin:
+- Download the latest `.zip` release from the [GitHub releases page](https://github.com/afxcode/afauzx-centrigraf-datasource/releases).
 
-### Frontend
+### 2. Install the Plugin:
+- Extract the `.zip` file into the Grafana plugin directory:
+   - **Linux**: `/var/lib/grafana/plugins/`
+   - **Windows**: `C:\Program Files\GrafanaLabs\grafana\data\plugins\`
+   - **Docker**: `/var/lib/grafana/plugins/`
 
-1. Install dependencies
+### 3. Restart Grafana:
+- After placing the plugin in the correct directory, restart Grafana:
+   - **Linux**: `sudo systemctl restart grafana-server`
+   - **Windows**: Restart the Grafana service.
 
-   ```bash
-   npm install
-   ```
+### 4. Configure the DataSource:
+- Navigate to **Configuration > Data Sources** in Grafana.
+- Add a new data source and select **Centrifugo** from the list.
+- Provide the URL of your Centrifugo server.
 
-2. Build plugin in development mode and run in watch mode
+### 5. Test the Connection:
+- Use the **Save & Test** button in the data source configuration to verify the connection. The plugin will attempt to connect to the Centrifugo backend and ensure that real-time data streaming is working.
 
-   ```bash
-   npm run dev
-   ```
+## How It Works:
+- The plugin connects to your Centrifugo server over WebSockets to receive live updates from channels.
+- Once the connection is established, it subscribes to specified channels and sends the incoming data to Grafana.
+- The plugin requires no backend server and runs entirely on the frontend, making it simple to deploy and configure.
 
-3. Build plugin in production mode
+## Notes:
+- **Centrifugo Instance**: Ensure that your Centrifugo server is running and accessible from your Grafana instance. You’ll need the URL of your Centrifugo instance to configure the plugin.
+- **Plugin Status**: This plugin is currently a work in progress and may not be fully tested. Please report any issues or feature requests on the [GitHub issues page](https://github.com/yourusername/your-repo/issues).
 
-   ```bash
-   npm run build
-   ```
+## Future Improvements:
+- Enhanced error handling and automatic reconnection logic for more robust operation.
+- Support for private channels and authentication mechanisms to secure your real-time data streams.
+- Expanded configuration options for advanced use cases.
 
-4. Run the tests (using Jest)
+## License:
+This plugin is open-source and licensed under the [Apache License](LICENSE).
 
-   ```bash
-   # Runs the tests and watches for changes, requires git init first
-   npm run test
+---
 
-   # Exits after running all the tests
-   npm run test:ci
-   ```
+### Contributing:
+Feel free to open an issue or submit a pull request if you would like to contribute to the development of this plugin. Your contributions are welcome!
 
-5. Spin up a Grafana instance and run the plugin inside it (using Docker)
-
-   ```bash
-   npm run server
-   ```
-
-6. Run the E2E tests (using Cypress)
-
-   ```bash
-   # Spins up a Grafana instance first that we tests against
-   npm run server
-
-   # Starts the tests
-   npm run e2e
-   ```
-
-7. Run the linter
-
-   ```bash
-   npm run lint
-
-   # or
-
-   npm run lint:fix
-   ```
-
-# Distributing your plugin
-
-When distributing a Grafana plugin either within the community or privately the plugin must be signed so the Grafana application can verify its authenticity. This can be done with the `@grafana/sign-plugin` package.
-
-_Note: It's not necessary to sign a plugin during development. The docker development environment that is scaffolded with `@grafana/create-plugin` caters for running the plugin without a signature._
-
-## Initial steps
-
-Before signing a plugin please read the Grafana [plugin publishing and signing criteria](https://grafana.com/legal/plugins/#plugin-publishing-and-signing-criteria) documentation carefully.
-
-`@grafana/create-plugin` has added the necessary commands and workflows to make signing and distributing a plugin via the grafana plugins catalog as straightforward as possible.
-
-Before signing a plugin for the first time please consult the Grafana [plugin signature levels](https://grafana.com/legal/plugins/#what-are-the-different-classifications-of-plugins) documentation to understand the differences between the types of signature level.
-
-1. Create a [Grafana Cloud account](https://grafana.com/signup).
-2. Make sure that the first part of the plugin ID matches the slug of your Grafana Cloud account.
-   - _You can find the plugin ID in the `plugin.json` file inside your plugin directory. For example, if your account slug is `acmecorp`, you need to prefix the plugin ID with `acmecorp-`._
-3. Create a Grafana Cloud API key with the `PluginPublisher` role.
-4. Keep a record of this API key as it will be required for signing a plugin
-
-## Signing a plugin
-
-### Using Github actions release workflow
-
-If the plugin is using the github actions supplied with `@grafana/create-plugin` signing a plugin is included out of the box. The [release workflow](./.github/workflows/release.yml) can prepare everything to make submitting your plugin to Grafana as easy as possible. Before being able to sign the plugin however a secret needs adding to the Github repository.
-
-1. Please navigate to "settings > secrets > actions" within your repo to create secrets.
-2. Click "New repository secret"
-3. Name the secret "GRAFANA_API_KEY"
-4. Paste your Grafana Cloud API key in the Secret field
-5. Click "Add secret"
-
-#### Push a version tag
-
-To trigger the workflow we need to push a version tag to github. This can be achieved with the following steps:
-
-1. Run `npm version <major|minor|patch>`
-2. Run `git push origin main --follow-tags`
-
-## Learn more
-
-Below you can find source code for existing app plugins and other related documentation.
-
-- [Basic data source plugin example](https://github.com/grafana/grafana-plugin-examples/tree/master/examples/datasource-basic#readme)
-- [`plugin.json` documentation](https://grafana.com/developers/plugin-tools/reference/plugin-json)
-- [How to sign a plugin?](https://grafana.com/developers/plugin-tools/publish-a-plugin/sign-a-plugin)
