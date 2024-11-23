@@ -1,5 +1,5 @@
-import {DataSourceJsonData} from '@grafana/data';
-import {DataQuery} from '@grafana/schema';
+import { DataSourceJsonData } from '@grafana/data';
+import { DataQuery } from '@grafana/schema';
 
 export interface MyQuery extends DataQuery {
   channelName: string;
@@ -19,11 +19,4 @@ export interface DataSourceResponse {
  */
 export interface MyDataSourceOptions extends DataSourceJsonData {
   url: string;
-}
-
-/**
- * Value that is used in the backend, but never sent over HTTP to the frontend
- */
-export interface MySecureJsonData {
-  apiKey?: string;
 }
