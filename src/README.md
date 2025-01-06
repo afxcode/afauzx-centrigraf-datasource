@@ -44,12 +44,12 @@ This Grafana DataSource plugin allows you to connect Grafana to a Centrifugo bac
 
 ## Notes:
 - **Centrifugo Instance**: Ensure that your Centrifugo server is running and accessible from your Grafana instance. You’ll need the URL of your Centrifugo instance to configure the plugin.
-- **Plugin Status**: This plugin is currently a work in progress and may not be fully tested. Please report any issues or feature requests on the [GitHub issues page](https://github.com/yourusername/your-repo/issues).
+- **Plugin Status**: This plugin is currently a work in progress and may not be fully tested. Please report any issues or feature requests on the [GitHub issues page](https://github.com/afxcode/afauzx-centrigraf-datasource/issues).
 
-## Future Improvements:
-- Enhanced error handling and automatic reconnection logic for more robust operation.
-- Support for private channels and authentication mechanisms to secure your real-time data streams.
-- Expanded configuration options for advanced use cases.
+## Build:
+- Build: ```$ npm run build```
+- Set token: ```$ export GRAFANA_ACCESS_POLICY_TOKEN=<token>```
+- Signing: ```$ npx @grafana/sign-plugin@latest --rootUrls http://localhost:3000```
 
 ## License:
 This plugin is open-source and licensed under the [Apache License](https://github.com/afxcode/afauzx-centrigraf-datasource/blob/539cdeb7a94e3d32be37887f7b67117ceaf5746b/LICENSE).
