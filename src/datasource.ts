@@ -88,7 +88,7 @@ export class DataSource extends DataSourceApi<MyQuery, MyDataSourceOptions> {
 
         let frame = new CircularDataFrame({
           append: 'tail',
-          capacity: 1000,
+          capacity: 1,
         });
 
         frame.refId = query.refId;
